@@ -36,6 +36,7 @@ import plotly.graph_objs as go
 import plotly.io as pio
 from plotly.offline import iplot, init_notebook_mode
 
+pio.orca.config.use_xvfb = True
 init_notebook_mode(connected=True)
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
