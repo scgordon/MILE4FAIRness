@@ -33,6 +33,8 @@ import itertools
 from plotly import tools
 import plotly.plotly
 import plotly.graph_objs as go
+from _plotly_future_ import v4
+
 import plotly.io as pio
 from plotly.offline import iplot, init_notebook_mode
 
@@ -1802,11 +1804,11 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
     lineConcepts.index = lineConcepts.index + 1  # shifting index
     lineConcepts.fillna('Average Completeness', inplace=True)
     lineConcepts = lineConcepts.sort_index()
-    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "CombinedCollections"+'_' + recommendationName + 'Complete.csv'), index=False)
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'Complete.csv'), index=False)
     
     # remove the site name from the column
     lineConcepts = lineConcepts.rename(columns={col: col.split('__')[-1] for col in lineConcepts.columns})
-    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "CombinedCollections"+'_' + recommendationName + 'Completeness.csv'), index=False)
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'Completeness.csv'), index=False)
 
     # create new version of concept occurrence table
     radarList = list(radarElements)
