@@ -30,10 +30,11 @@ import logging
 from IPython.core.display import display, HTML
 
 import itertools
+from _plotly_future_ import v4
 from plotly import tools
 import plotly.plotly
 import plotly.graph_objs as go
-from _plotly_future_ import v4
+
 
 import plotly.io as pio
 from plotly.offline import iplot, init_notebook_mode
