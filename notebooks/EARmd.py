@@ -1717,7 +1717,7 @@ def CombineAppliedRecommendation(Site, recElements, recommendationName, Recommen
     # places for all the combined data
 
     RecommendationOccurrence = os.path.join("..", "data", recommendationName, "combinedCollections" + '_' + recommendationName + 'Occurrence.csv')
-    RecommendationConcept = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + 'Completeness.csv')
+    RecommendationConcept = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + 'completeness.csv')
     #RecommendationGraph = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + '_.png')
 
     if RecommendationcountsToCombine is not None:
