@@ -1,0 +1,274 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org"
+    ],
+    "@type": "SoftwareSourceCode",
+    "identifier": "LTERsitesAnalysis",
+    "description": "Code, notebooks, and supporting files to run an analysis of the LTER science metadata from DataONE to study how community information needs evolve over time",
+    "name": "LTER Sites Analysis",
+    "codeRepository": "https://github.com/scgordon/LTERsitesAnalysis",
+    "relatedLink": [
+        "https://doi.org/10.5281/zenodo.2529530",
+        "https://github.com/scgordon/LTERsitesAnalysis/blob/master/Evaluate_Analyze_and_Report_on_a_metadataset_nbmeta.json",
+        "https://github.com/scgordon/LTERsitesAnalysis/blob/master/Create_a_metadataset_nbmeta.json",
+        "https://github.com/scgordon/LTERsitesAnalysis/blob/master/packageMetadata_nbmeta.json"
+    ],
+    "issueTracker": "https://github.com/scgordon/LTERsitesAnalysis/issues",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "version": "0.0.4",
+    "programmingLanguage": {
+        "@type": "ComputerLanguage",
+        "name": "Python",
+        "version": "3.7.1",
+        "url": "https://www.python.org/"
+    },
+    "runtimePlatform": "Jupyterlab version 0.35.4 (2018-11-03)",
+    "provider": {
+        "@id": "https://jupyter.org",
+        "@type": "Organization",
+        "name": "Jupyter Team",
+        "url": "https://jupyter.org"
+    },
+    "author": [
+        {
+            "@type": "Person",
+            "givenName": "Sean",
+            "familyName": "Gordon",
+            "email": "scgordon@hdfgroup.org",
+            "@id": "https://orcid.org/0000-0001-9050-6141"
+        },
+        {
+            "@type": "Person",
+            "givenName": "Ted",
+            "familyName": "Habermann",
+            "@id": "https://orcid.org/0000-0003-3585-6733"
+        }
+    ],
+    "contributor": [{
+        "@type": "Person",
+        "givenName": "Aleksandar",
+        "familyName": "Jelenak"
+    }],
+    "copyrightHolder": [{
+        "@type": "Person",
+        "givenName": "Sean",
+        "familyName": "Gordon",
+        "email": "scgordon@hdfgroup.org",
+        "@id": "https://orcid.org/0000-0001-9050-6141"
+    }],
+    "funder": [{
+        "@type": "Organization",
+        "name": "National Science Foundation"
+    }],
+    "funding": "Award #1443062",
+    "maintainer": [{
+        "@type": "Person",
+        "givenName": "Sean",
+        "familyName": "Gordon",
+        "email": "scgordon@hdfgroup.org",
+        "@id": "https://orcid.org/0000-0001-9050-6141"
+    }],
+    "softwareSuggestions": [
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "pydrive",
+            "name": "pydrive",
+            "provider": {
+                "@id": "https://github.com/gsuitedevs/PyDrive",
+                "@type": "Organization",
+                "name": "Google",
+                "url": "https://github.com/gsuitedevs/PyDrive"
+            },
+            "sameAs": "https://pypi.org/project/PyDrive/"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "Anaconda-Navigator",
+            "name": "Anaconda-Navigator",
+            "provider": {
+                "@id": "https://www.anaconda.com/",
+                "@type": "Organization",
+                "name": "Anaconda Inc",
+                "url": "https://www.anaconda.com/"
+            },
+            "sameAs": "https://anaconda.org/anaconda/anaconda-navigator"
+        }
+    ],
+    "softwareRequirements": [
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "Python",
+            "name": "Python",
+            "version": ">= 3.0.0"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "jupyter",
+            "name": "jupyter",
+            "version": ">= 5.0.0",
+            "provider": {
+                "@id": "https://jupyter.org",
+                "@type": "Organization",
+                "name": "Jupyter Team",
+                "url": "https://jupyter.org"
+            }
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "java",
+            "name": "Java Runtime Environment",
+            "provider": {
+                "@id": "https://www.java.com",
+                "@type": "Organization",
+                "name": "Oracle",
+                "url": "https://www.java.com"
+            }
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "saxon-B",
+            "name": "Saxon",
+            "provider": {
+                "@id": "http://www.saxonica.com/",
+                "@type": "Organization",
+                "name": "Saxonica",
+                "url": " http://www.saxonica.com/"
+            },
+            "sameAs": "https://sourceforge.net/projects/saxon/files/Saxon-B/9.1.0.8/saxonb9-1-0-8j.zip/download"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "sys",
+            
+            "sameAs": "https://pypi.org/project/sys"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "os",
+
+            "sameAs": "https://pypi.org/project/os"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "pandas",
+            
+            "sameAs": "https://pypi.org/project/pandas"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "gzip",
+
+            "sameAs": "https://pypi.org/project/gzip"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "shutil",
+ 
+            "sameAs": "https://pypi.org/project/shutil"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "subprocess",
+
+            "sameAs": "https://pypi.org/project/subprocess"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "tarfile",
+
+            "sameAs": "https://pypi.org/project/tarfile"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "MDeval",
+
+            "sameAs": "https://www.github.com/scgordon/MDeval"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "random",
+
+            "sameAs": "https://pypi.org/project/random"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "IPython.core.display",
+
+            "sameAs": "https://pypi.org/project/ipython"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "glob",
+
+            "sameAs": "https://pypi.org/project/glob"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "requests",
+
+            "sameAs": "https://pypi.org/project/requests"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "xlsxwriter",
+
+            "sameAs": "https://pypi.org/project/xlsxwriter"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "lxml",
+
+            "sameAs": "https://pypi.org/project/lxml"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "csv",
+
+            "sameAs": "https://pypi.org/project/csv"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "logging",
+
+            "sameAs": "https://pypi.org/project/logging"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "plotly",
+
+            "sameAs": "https://pypi.org/project/plotly"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "itertools",
+
+            "sameAs": "https://pypi.org/project/itertools"
+        }
+    ],
+    "keywords": [
+        "metadata",
+        "codemeta",
+        "nbmeta",
+        "citation",
+        "credit",
+        "linked-data",
+        "json-ld",
+        "python",
+        "jupyter",
+        "notebooks",
+        "DataONE",
+        "LTER",
+        "recommendation",
+        "information need",
+        "shape of completeness",
+        "evaluation",
+        "analysis",
+        "reports",
+        "EAR",
+        "metadig",
+        "DIBBs"
+    ],
+    "contIntegration": ["https://travis-ci.org/scgordon/LTERsitesAnalysis"],
+    "developmentStatus": "http://www.repostatus.org/#active"
+}
