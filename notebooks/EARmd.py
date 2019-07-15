@@ -116,7 +116,7 @@ def applyRecommendation(recElements, recommendationName, collection):
     
     RecommendationEvaluated = os.path.join("..","data", recommendationName, collection + '_' + recommendationName + 'Evaluated.csv.gz')
     #RecommendationCounts = os.path.join("../data/", collection + '_' + recommendationName + 'Counts.csv')
-    RecommendationOccurrence = os.path.join("..","data", recommendationName, collection + '_' + recommendationName + 'occurrence.csv')
+    RecommendationOccurrence = os.path.join("..","data", recommendationName, collection + '_' + recommendationName + 'Occurrence.csv')
     
    
     # Use the output of the evaluation transform and the piped string 
@@ -1284,7 +1284,7 @@ def crop(image_path, coords, saved_location):
 def CombineAppliedRecommendation(Site, recElements, recommendationName, RecommendationOccurrenceToCombine, RecommendationcountsToCombine=None):
     # places for all the combined data
 
-    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "combinedCollections" + '_' + recommendationName + 'occurrence.csv')
+    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "combinedCollections" + '_' + recommendationName + 'Occurrence.csv')
     RecommendationConcept = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + 'completeness.csv')
     #RecommendationGraph = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + '_.png')
 
@@ -1339,7 +1339,7 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
              'RecLevel',
              'RecElement']
      # use a sites recommendation elements occurrence table, and add some columns for metadata about the recommendation
-    recOccurDF = pd.read_csv(os.path.join("..","data", recommendationName, "combinedCollections"+"_" + recommendationName + "occurrence.csv"))
+    recOccurDF = pd.read_csv(os.path.join("..","data", recommendationName, "combinedCollections"+"_" + recommendationName + "Occurrence.csv"))
     recOccurDF.insert(0, "RecElement", 0, allow_duplicates=False)
     recOccurDF.insert(0, "RecLevel", 0, allow_duplicates=False)    
     recOccurDF.insert(0, "RecConcept", '', allow_duplicates=False)
