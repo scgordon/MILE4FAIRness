@@ -39,7 +39,7 @@ import plotly.graph_objs as go
 import plotly.io as pio
 from plotly.offline import iplot, init_notebook_mode
 
-pio.orca.config.use_xvfb = True
+pio.orca.config.use_xvfb = 'auto'
 init_notebook_mode(connected=True)
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
@@ -1376,7 +1376,7 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
     lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'complete.csv'), index=False)
     
     # remove the site name from the column
-    lineConcepts = lineConcepts.rename(columns={col: col.split('__')[-1] for col in lineConcepts.columns})
+    #lineConcepts = lineConcepts.rename(columns={col: col.split('__')[-1] for col in lineConcepts.columns})
     lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'completeness.csv'), index=False)
 
     # create new version of concept occurrence table
