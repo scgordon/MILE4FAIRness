@@ -64,6 +64,7 @@ Click this link to get started: [determineFAIRness.ipynb](https://colab.research
 * how the data was normalized
 
 ## Creating a Recommendation Resources
+[Google Doc for Collaborating](https://docs.google.com/document/d/1pD76sp16zKm4noSMT1ZGGPw1n3zaJrIaEW-h1Fe_MSg/edit?usp=sharing) 
 http://wiki.esipfed.org/index.php/Data_Discovery_(FGDC)
 
 https://github.com/NCEAS/metadig-checks/blob/master/docs/DataONE-FAIR-Quality-Suite.csv
