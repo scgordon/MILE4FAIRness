@@ -1339,7 +1339,7 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
              'RecLevel',
              'RecElement']
      # use a sites recommendation elements occurrence table, and add some columns for metadata about the recommendation
-    recOccurDF = pd.read_csv(os.path.join("..","data", recommendationName, "combinedCollections"+"_" + recommendationName + "Occurrence.csv"))
+    recOccurDF = pd.read_csv(os.path.join("..","data", recommendationName, "combinedCollections"+"_" + recommendationName + "occurrence.csv"))
     recOccurDF.insert(0, "RecElement", 0, allow_duplicates=False)
     recOccurDF.insert(0, "RecLevel", 0, allow_duplicates=False)    
     recOccurDF.insert(0, "RecConcept", '', allow_duplicates=False)
