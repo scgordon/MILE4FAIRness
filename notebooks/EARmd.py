@@ -1716,7 +1716,7 @@ def Site_ttConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Concep
 def CombineAppliedRecommendation(Site, recElements, recommendationName, RecommendationOccurrenceToCombine, RecommendationcountsToCombine=None):
     # places for all the combined data
 
-    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "combinedCollections" + '_' + recommendationName + 'Occurrence.csv')
+    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "combinedCollections" + '_' + recommendationName + 'occurrence.csv')
     RecommendationConcept = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + 'completeness.csv')
     #RecommendationGraph = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + '_.png')
 
