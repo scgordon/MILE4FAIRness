@@ -66,6 +66,7 @@ Click this link to get started: [determineFAIRness.ipynb](https://colab.research
 ## Creating a Recommendation Resources
 http://wiki.esipfed.org/index.php/Data_Discovery_(FGDC)
 
+https://github.com/NCEAS/metadig-checks/blob/master/docs/DataONE-FAIR-Quality-Suite.csv
 ##### Additional resources for further exploration
 * [Google Colaboratory FAQs](https://research.google.com/colaboratory/faq.html)
 * [About Jupyter](https://jupyter.org/)
