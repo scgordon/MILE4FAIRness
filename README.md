@@ -25,20 +25,13 @@ Your Python environment requires the following:
 
 * [python](https://python.org) >=3.6
 
-* [pandas]()
-* [csv]()
-* [gzip]()
-* [os]()
-* [requests]()
-* [xlsxwriter]()
-* [pydrive]()
-* [lxml]()
-* [sys]()
-* [logging]()
-* [IPython.core.display]()
-* [shutil]()
-* [itertools]()
-* [subprocess]()
+* [pandas](https://pandas.pydata.org/)
+* [requests](https://pypi.org/project/requests/)
+* [xlsxwriter](https://pypi.org/project/XlsxWriter/)
+* [pydrive](https://pypi.org/project/PyDrive/)
+* [lxml](https://pypi.org/project/lxml/)
+* [logging](https://pypi.org/project/logging/)
+* [IPython.core.display](https://ipython.readthedocs.io/en/stable/)
 * [plotly]() >=3.8
 
 
