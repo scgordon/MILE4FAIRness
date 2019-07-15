@@ -32,7 +32,7 @@ Your Python environment requires the following:
 * [lxml](https://pypi.org/project/lxml/)
 * [logging](https://pypi.org/project/logging/)
 * [IPython.core.display](https://ipython.readthedocs.io/en/stable/)
-* [plotly]() >=3.8
+* [plotly](https://pypi.org/project/plotly/) >=3.8
 
 
 This workshop has been tested in [JupyterLab](https://jupyter.org) >= 4.4.0 and Google Colaboratory.
@@ -52,9 +52,9 @@ Click this link to get started: [determineFAIRness.ipynb](https://colab.research
 * Evaluate, analyze, and report on FAIRness
 
 ##### [Compile Collection](./notebook/compileCollections.ipynb)
-* where the data was retrieved from
-* why we had to scrub the data
-* how the data was normalized
+* Create a directory for metadata in the repository
+* Different ways to get metadata
+* How to upload it to your server in the right directory
 
 ## Creating a Recommendation Resources
 [Google Doc for Collaborating](https://docs.google.com/document/d/1pD76sp16zKm4noSMT1ZGGPw1n3zaJrIaEW-h1Fe_MSg/edit?usp=sharing) 
