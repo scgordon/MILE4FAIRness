@@ -1,6 +1,6 @@
-# Explore Atlantic Storms
+# Metadata Improvement Lab at ESIP 4: Determining FAIR
 
-A repository designed to facilitate exploration of hurricane data by STEM teachers attending the ESIP Education Committee's Summer Workshop. Participants will explore the notebook, ExploreAtlanticStorms.ipny, to plot hurricane tracks and intensities and plot graphs using simple statistics. The repository uses Python code in a Jupyter Notebook to explore hurricanes in the Atlantic through a computational narrative.
+A repository designed to facilitate exploration of what makes metadata collections from around ESIP's interdisciplinary . Participants will explore the notebook, ExploreAtlanticStorms.ipny, to plot hurricane tracks and intensities and plot graphs using simple statistics. The repository uses Python code in a Jupyter Notebook to explore hurricanes in the Atlantic through a computational narrative.
 
 
 ## Welcome
