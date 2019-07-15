@@ -1,7 +1,6 @@
 # Metadata Improvement Lab at ESIP 4: Determining FAIR
 
-A repository designed to facilitate exploration of what makes metadata collections from around ESIP's interdisciplinary . Participants will explore the notebook, ExploreAtlanticStorms.ipny, to plot hurricane tracks and intensities and plot graphs using simple statistics. The repository uses Python code in a Jupyter Notebook to explore hurricanes in the Atlantic through a computational narrative.
-
+A repository designed to facilitate exploration of what makes metadata collections FAIR from around ESIP's interdisciplinary community.
 
 ## Welcome
 
@@ -12,53 +11,59 @@ The name **Jupyter** refers to the three coding languages, **Julia, Python, and 
 For this workshop, we are using Google Colaboratory which is a Jupyter notebook environment that requires no setup to use.
 
 ####  Overview of workshop session
+In the fourth installment of the Metadata Improvement Lab, participants will utilize Python, XSL, and Jupyter Notebooks to determine if metadata collections contain the concepts needed to be FAIR. Participants will be able to utilize their own metadata, regardless of standard or choose from many sample collections from ESIP member organizations. Participants can load as many metadata collections as they would like to compare. 
+
+No coding experience will be needed, though a basic understanding of XML will be helpful. A step by step set up for using Google Colaboratory, a Jupyter based web accessible computational environment, will be given. Participants will only need a Google account and a connected web browser to access and run the repository which will allow them to create a shape visualization that describes the fitness of their metadata’s FAIRness. No changes will be made to the device or account used. Participants may also import the workshop repository into their own Jupyter environment.
+
+Since there are many ideas of what it means to be FAIR, this workshop will allow participants to work together or on their own to create a recommendation using Google Docs to facilitate collaboration. During the workshop we will discuss a draft of what FAIR means for EML producing membernodes that was compiled during a workshop this March at DataONE. The Documentation Cluster has built many wiki pages containing recommendations and the XPaths needed in many popular metadata standards, which will aid in the creation of a FAIR recommendation that works for the many standards used throughout ESIP’s member organizations. 
+
+The recommendation will then be applied to the collections that participants have chosen to analyze. The workshop framework is highly portable and reusable, even including the generation of the raw data needed to evaluate the content of the metadata, though only the structure of documents will be utilized in this workshop. A report on the outcomes of the analysis will be created as a sharable Google Sheet. The report generated allows for comparison of collections, so that improvement can be measured, documented and visualized. 
+
 * [Slides](https://schd.ws/hosted_files/2018esipsummermeeting/ab/MILESsessionOverview.pptx)
 
 Your Python environment requires the following:
 
 * [python](https://python.org) >=3.6
-* [numpy](https://numpy.org) >= 1.16.4
-* [matplotlib](https://matplotlib.org) >= 3.1.1
-* [basemap](http://matplotlib.org/basemap) >= 1.2.0
 
-This workshop has been tested in [Jupyter](https://jupyter.org) >= 4.4.0 and Google colaboratory.
+* [pandas]()
+* [csv]()
+* [gzip]()
+* [os]()
+* [requests]()
+* [xlsxwriter]()
+* [pydrive]()
+* [lxml]()
+* [sys]()
+* [logging]()
+* [IPython.core.display]()
+* [shutil]()
+* [itertools]()
+* [subprocess]()
+* [plotly]() >=3.8
+
+
+This workshop has been tested in [JupyterLab](https://jupyter.org) >= 4.4.0 and Google Colaboratory.
 
 ## Workshop
 
 Time to dive in!
 
-* Scroll up to the top of the Github repository (this page). In the upper right there is a green box that says clone or download. Click it, then copy the url to your clipboard via the clipboard icon to the right of the url or by any other method you prefer. You can use this method to import any Github repository! 
-
-!git clone
-
-* Now click this link to open Colaboratory:
-
-[Google Colaboratory](https://colab.research.google.com/notebook#create=true&language=python3)
-
+Click this link to get started: [determineFAIRness.ipynb](https://colab.research.google.com/github/scgordon/MILE4FAIRness/blob/master/notebooks/determineFAIRness.ipynb) 
 
 ### Notebooks
 
-##### [Atlantic Storms Notebook](./15May_atlantic_storms.ipynb)
-* why you and your students will care
-* what you'll accomplish
-* what you'll see
+##### [Determine FAIRness Notebook](./notebook/determineFAIRness.ipynb)
+* Create environment
+* Upload metadata
+* Add recommendation
+* Evaluate, analyze, and report on FAIRness
 
-
-"walk students through some basic visualizations and data analysis encouraging students to change the code displayed to answer questions such as “Where did Hurricane Sandy go?” and “What storms occurred during 1981?”. This includes a number of visualizations of hurricane tracks, coloring by strength of storms, and an analysis of average number of storms per year. "
-
-
-##### [Data Scrubber Notebook](./data_scrubber.ipynb)
+##### [Compile Collection](./notebook/compileCollections.ipynb)
 * where the data was retrieved from
 * why we had to scrub the data
 * how the data was normalized
 
-##### [Explaining Python Imports](./explanation_of_initial_python_imports)
-* Create csv with recommendation concept content for the collection 
-* translate concept names into the schema.org vocabulary
-* create valid JSON-LD for a record
-* Use Google's [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/) to test results
-
-## Discussion / Questions / self-guided exploration
+## Creating a 
 
 ##### Additional resources for further exploration
 * [Google Colaboratory FAQs](https://research.google.com/colaboratory/faq.html)
