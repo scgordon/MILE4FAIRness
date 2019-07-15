@@ -63,7 +63,8 @@ Click this link to get started: [determineFAIRness.ipynb](https://colab.research
 * why we had to scrub the data
 * how the data was normalized
 
-## Creating a 
+## Creating a Recommendation Resources
+http://wiki.esipfed.org/index.php/Data_Discovery_(FGDC)
 
 ##### Additional resources for further exploration
 * [Google Colaboratory FAQs](https://research.google.com/colaboratory/faq.html)
@@ -73,17 +74,6 @@ Click this link to get started: [determineFAIRness.ipynb](https://colab.research
 * [Colaboratory Getting Started](https://colab.research.google.com/notebooks/welcome.ipynb)
 * [Colaboratory Tutorial](https://medium.com/@rohansingh_46766/getting-started-with-google-colaboratory-57b4863d4d7d)
 
-#### Bibliography
-
-Need to replace current lines for repo, colab, data, original notebook, etc
-
-* ESIPhub: Supporting Interactive Geoscience Workshops. (2018). HCL, National Data Service. Retrieved from https://github.com/nds-org/esiphub (Original work published 2018)
-* Gordon, S. (2018). MILES: Metadata Improvement Lab at ESIP: schema.org for datasets. Python. Retrieved from https://github.com/scgordon/MILES (Original work published 2018)
-* Gordon, S., Jelenak, A., & Habermann, T. (2018). MDeval: Python module for xml metadata analysis and reporting (Version .10). Retrieved from https://github.com/scgordon/MDeval (Original work published 2018)
-* Jelenak, A., Gordon, S., & Habermann, T. (2017). Metadata Evaluation Web Service. Retrieved July 16, 2018, from http://metadig.nceas.ucsb.edu/metadata/evaluator
-* JupyterHub — JupyterHub 0.9.1 documentation. (n.d.). Retrieved July 15, 2018, from https://jupyterhub.readthedocs.io/en/stable/
-* JupyterLab Documentation — JupyterLab 1.0 Beta documentation. (n.d.). Retrieved July 15, 2018, from http://jupyterlab.readthedocs.io/en/stable/
-* Structured Data Testing Tool. (n.d.). Retrieved July 16, 2018, from https://search.google.com/structured-data/testing-tool/u/0/
 
 
 
