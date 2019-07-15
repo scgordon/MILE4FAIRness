@@ -24,14 +24,12 @@ The recommendation will then be applied to the collections that participants hav
 Your Python environment requires the following:
 
 * [python](https://python.org) >=3.6
-
-* [pandas](https://pandas.pydata.org/)
-* [requests](https://pypi.org/project/requests/)
-* [xlsxwriter](https://pypi.org/project/XlsxWriter/)
-* [pydrive](https://pypi.org/project/PyDrive/)
-* [lxml](https://pypi.org/project/lxml/)
-* [logging](https://pypi.org/project/logging/)
-* [IPython.core.display](https://ipython.readthedocs.io/en/stable/)
+* [pandas](https://pandas.pydata.org/)>=0.23.4
+* [requests](https://pypi.org/project/requests/)>=2.19.1
+* [xlsxwriter](https://pypi.org/project/XlsxWriter/)>=1.1.0
+* [pydrive](https://pypi.org/project/PyDrive/)>=1.3.1
+* [lxml](https://pypi.org/project/lxml/) >=4.2.5
+* [IPython.core.display](https://ipython.readthedocs.io/en/stable/)>=6.5.0
 * [plotly](https://pypi.org/project/plotly/) >=3.8
 
 
