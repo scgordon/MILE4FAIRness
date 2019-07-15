@@ -1805,11 +1805,11 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
     lineConcepts.index = lineConcepts.index + 1  # shifting index
     lineConcepts.fillna('Average Completeness', inplace=True)
     lineConcepts = lineConcepts.sort_index()
-    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'Complete.csv'), index=False)
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'complete.csv'), index=False)
     
     # remove the site name from the column
     lineConcepts = lineConcepts.rename(columns={col: col.split('__')[-1] for col in lineConcepts.columns})
-    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'Completeness.csv'), index=False)
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "combinedCollections"+'_' + recommendationName + 'completeness.csv'), index=False)
 
     # create new version of concept occurrence table
     radarList = list(radarElements)
