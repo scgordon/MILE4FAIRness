@@ -30,16 +30,14 @@ import logging
 from IPython.core.display import display, HTML
 
 import itertools
-from _plotly_future_ import v4
 from plotly import tools
 import plotly.plotly
+from _plotly_future_ import v4
 import plotly.graph_objs as go
-
-
 import plotly.io as pio
 from plotly.offline import iplot, init_notebook_mode
 
-pio.orca.config.use_xvfb = 'auto'
+pio.orca.config.use_xvfb = True
 init_notebook_mode(connected=True)
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
@@ -268,7 +266,8 @@ def CombineXPathOccurrence(CollectionComparisons,
     return ConceptCountsDF
 
 
-def CombinationSpreadsheet(recommendationName, xpathOccurrence, recommendationOccurrence,
+
+def CombinationSpreadsheet(xpathOccurrence, recommendationOccurrence,
                            RecommendationConcept, RecommendationGraph,
                            RecGraphLink,
                            DataDestination, AVGxpathOccurrence=None,
@@ -303,13 +302,13 @@ def CombinationSpreadsheet(recommendationName, xpathOccurrence, recommendationOc
     formatYellow = workbook.add_format(
         {'bg_color': '#FFEB9C', 'font_color': '#9C6500'})
     RecommendationConceptWS = workbook.add_worksheet(
-        recommendationName + '_Concepts')
+        'BestPractices2004_Concepts')
     # RecommendationGraphWS = workbook.add_worksheet(
     #    'RecommendationGraph')
     # Insert an image with scaling.
-    RecommendationConceptWS.write('K2', "Full Image")
-    RecommendationConceptWS.write('K3', RecGraphLink)
-    RecommendationConceptWS.insert_image('K4', RecommendationGraph, {'x_scale': .07, 'y_scale': .07})
+    RecommendationConceptWS.write('A29', "Full Image")
+    RecommendationConceptWS.write('B29', RecGraphLink)
+    RecommendationConceptWS.insert_image('A30', RecommendationGraph, {'x_scale': .07, 'y_scale': .07})
 
     Reader = csv.reader(
         open(RecommendationConcept, 'r'), delimiter=',', quotechar='"')
@@ -327,15 +326,318 @@ def CombinationSpreadsheet(recommendationName, xpathOccurrence, recommendationOc
     RecommendationConceptWS.set_column(1, 1, 15)
     RecommendationConceptWS.set_column(2, 2, 20)
     RecommendationAnalysisWS = workbook.add_worksheet(
-        recommendationName + '_Elements')
+        'BestPractices2004_Elements')
     RecommendationAnalysisWS.set_column(2, 4, 12)
     recommendationoccurrenceWS = workbook.add_worksheet(
-        recommendationName + '_Occurrence')
+        'BestPractices2004_Occurrence')
     avgRecommendationOccurWS = workbook.add_worksheet(
-            recommendationName + '_AVGoccurrence')
+            'BestPractices2004_AVGoccurrence')
     if recommendationCounts is not None:
-        recommendationcounts = workbook.add_worksheet(recommendationName + '_Counts')
+        recommendationcounts = workbook.add_worksheet('BestPractices2004_Counts')
 ###################################################################
+# if a second recommendation
+
+    if recommendationOccurrence2 is not None:
+
+        RecommendationConcept2WS = workbook.add_worksheet(
+        'BestPractices2011_Concepts')
+        # RecommendationGraphWS = workbook.add_worksheet(
+        #    'RecommendationGraph')
+        # Insert an image with scaling.
+        RecommendationConcept2WS.write('A31', "Full Image")
+        RecommendationConcept2WS.write('B31', RecGraphLink2)
+        RecommendationConcept2WS.insert_image('A33', RecommendationGraph2, {'x_scale': .07, 'y_scale': .07})
+        
+        
+        Reader = csv.reader(
+            open(RecommendationConcept2, 'r'), delimiter=',', quotechar='"')
+
+        row_count = 0
+        RecommendationConcept2WS.set_row(0, None, cell_format04)
+        RecommendationConcept2WS.set_row(2, None, cell_format04)
+        
+        for row in Reader:
+            for col in range(len(row)):
+                RecommendationConcept2WS.write(row_count, col, row[col])
+                RecommendationConcept2WS.set_column(col, col, 7, cell_format11)
+            row_count += 1
+        RecommendationConcept2WS.set_column(0, 0, 20)
+        RecommendationConcept2WS.set_column(1, 1, 15)
+        RecommendationConcept2WS.set_column(2, 2, 20)
+        RecommendationAnalysis2WS = workbook.add_worksheet(
+            'BestPractices2011_Elements')
+        RecommendationAnalysis2WS.set_column(2, 4, 12)
+        recommendationoccurrence2WS = workbook.add_worksheet(
+            'BestPractices2011_Occurrence')
+        avgRecommendationOccur2WS = workbook.add_worksheet(
+                'BestPractices2011_AVGoccurrence')
+        if recommendationCounts2 is not None:
+            recommendationCounts2 = workbook.add_worksheet('BestPractices2011_Counts')
+
+        #######################################################################
+
+        RecommendationAnalysis2WS.set_column('A:A', 70)
+        RecommendationAnalysis2WS.set_column('B:B', 20)
+
+        recommendationoccurrence2WS.set_column('A:A', 70)
+        recommendationoccurrence2WS.hide()
+        Reader = csv.reader(
+            open(recommendationOccurrence2, 'r'), delimiter=',', quotechar='"')
+
+        row_count = 0
+        recommendationoccurrence2WS.set_row(1, None, cell_format04)
+        for row in Reader:
+            for col in range(len(row)):
+                recommendationoccurrence2WS.write(
+                    row_count, col, row[col])
+
+                recommendationoccurrence2WS.set_column(
+                    col, col, 15, cell_format11)
+            row_count += 1
+        Reader = csv.reader(
+            open(recommendationOccurrence2, 'r'), delimiter=',', quotechar='"')
+
+        row_count = 0
+        for row in Reader:
+            if Reader.line_num != 2:
+                for col in range(1, len(row)):
+                    RecommendationAnalysis2WS.write(
+                        row_count + 9, col + 4, row[col], cell_format11
+                    )
+
+                for col in range(0, 1):
+                    RecommendationAnalysis2WS.write(
+                        row_count + 9, col, row[col], cell_format11)
+
+                    Recommendationcell = xlsxwriter.utility.xl_rowcol_to_cell(
+                        row_count + 9, 0)
+                    formulaElementSimplifier = (
+                        '=MID(' + Recommendationcell +
+                        ',1+FIND("|",SUBSTITUTE(' + Recommendationcell +
+                        ',"/","|",LEN(' + Recommendationcell + ')-LEN(SUBSTITUTE(' +
+                        Recommendationcell + ',"/","")))),100)'
+                    )
+                    RecommendationAnalysis2WS.write(
+                        row_count + 9, col + 1, formulaElementSimplifier, cell_format11
+                    )
+                row_count += 1
+
+        avgRecommendationOccur2WS.set_column('A:A', 70)
+        avgRecommendationOccur2WS.hide()
+        
+        if AVGrecommendationOccurrence2 is not None:
+
+            Reader = csv.reader(
+                open(AVGrecommendationOccurrence2, 'r'), delimiter=',', quotechar='"')
+            row_count = 0
+            avgRecommendationOccur2WS.set_row(1, None, cell_format04)
+            for row in Reader:
+                for col in range(len(row)):
+                    avgRecommendationOccur2WS.write(
+                        row_count, col, row[col])
+                    avgRecommendationOccur2WS.set_column(col, col, 15, cell_format05)
+        RecommendationAnalysis2WS.write('A2', 'Number of records')
+        RecommendationAnalysis2WS.write('A3', 'Number of elements')
+        RecommendationAnalysis2WS.write(
+            'A4',
+            'Number of recommendation elements'
+        )
+        RecommendationAnalysis2WS.write('A5', 'Recommendation focus')
+        RecommendationAnalysis2WS.write('A6', 'Complete elements in the collection')
+        RecommendationAnalysis2WS.write('A7', 'Complete recommendation elements in the collection')
+        RecommendationAnalysis2WS.write(
+            'A8', 'Recommendation completeness focus')
+        RecommendationAnalysis2WS.write('A9', 'Upload Date')
+        RecommendationAnalysis2WS.write('B1', 'Formulas')
+        RecommendationAnalysis2WS.write('C1', 'MIN')
+        RecommendationAnalysis2WS.write('D1', 'MAX')
+        RecommendationAnalysis2WS.write('E1', 'AVG')
+        RecommendationAnalysis2WS.write('B10', 'Element Name')
+        RecommendationAnalysis2WS.write('C10', 'Collections')
+        RecommendationAnalysis2WS.write('D10', 'Complete')
+        RecommendationAnalysis2WS.write('E10', 'Partial')
+
+        Reader = csv.reader(
+            open(recommendationOccurrence2, 'r'), delimiter=',', quotechar='"')
+
+        row_count = 0
+        for row in Reader:
+            for col in range(len(row) - 1):
+                ElementTotal = xlsxwriter.utility.xl_rowcol_to_cell(5, col + 5)
+                RecommendationElementTotal = xlsxwriter.utility.xl_rowcol_to_cell(6, col + 5)
+                cell2 = xlsxwriter.utility.xl_rowcol_to_cell(0, col + 1)
+                cell3 = xlsxwriter.utility.xl_rowcol_to_cell(2, col + 5)
+                cell4 = xlsxwriter.utility.xl_rowcol_to_cell(3, col + 5)
+                colRange = xlsxwriter.utility.xl_range(2, col + 1, 5000, col + 1)
+                colRange2 = xlsxwriter.utility.xl_range(2, 5, 2, len(row) + 3)
+
+                formula2 = '=COUNTIF(XpathOccurrence!' + colRange + ',">"&0)'
+                RecommendationAnalysis2WS.write(2, col + 5, formula2)
+
+                formula3 = '=COUNTIF(BestPractices2011_Occurrence!' + colRange + ',">"&0)'
+                RecommendationAnalysis2WS.write(3, col + 5, formula3)
+
+                formula4 = '='+cell4+'/'+cell3
+                RecommendationAnalysis2WS.write(4, col + 5, formula4, cell_format11)
+
+                formula5 = '=COUNTIF(XpathOccurrence!' + colRange + ',"=1")/'+cell3 
+                RecommendationAnalysis2WS.write(5, col + 5, formula5, cell_format11)
+
+                formula6 = '=COUNTIF(BestPractices2011_Occurrence!' + colRange + ',"=1")/'+cell3
+                RecommendationAnalysis2WS.write(6, col + 5, formula6, cell_format11)
+
+                formula7 = '='+RecommendationElementTotal+'/'+ElementTotal
+                RecommendationAnalysis2WS.write(7, col + 5, formula7, cell_format11)
+
+                formula1 = (
+                    '=VLOOKUP("Number of Records",BestPractices2011_Occurrence!1:1048576,' +
+                    str(col + 2) + ', False)'
+                )
+                RecommendationAnalysis2WS.write(1, col + 5, formula1, cell_format04)
+
+                formula = '=BestPractices2011_Occurrence!' + '%s' % cell2
+                RecommendationAnalysis2WS.write(0, col + 5, formula)
+                dateFormula = (
+                    '=LEFT(RIGHT(BestPractices2011_Occurrence!' + '%s' % cell2 +
+                    ',LEN(BestPractices2011_Occurrence!' + '%s' % cell2 +
+                    ')-FIND("_", BestPractices2011_Occurrence!' +
+                    '%s' % cell2 + ')-1),FIND("_",BestPractices2011_Occurrence!' +
+                    '%s' % cell2 + ')+1)'
+                )
+                RecommendationAnalysis2WS.write(8, col + 5, dateFormula)
+                collectFormula = (
+                    '=LEFT(BestPractices2011_Occurrence!' + '%s' % cell2 +
+                    ',FIND("_",BestPractices2011_Occurrence!' + '%s' % cell2 + ')-1)'
+                )
+
+                RecommendationAnalysis2WS.write(9, col + 5, collectFormula)
+
+            row_count += 1
+        #######################################################################
+
+        if recommendationCounts2 is not None:
+            Reader = csv.reader(
+                open(recommendationCounts2, 'r'), delimiter=',', quotechar='"')
+            row_count = 0
+
+            for row in Reader:
+                for col in range(len(row)):
+                    recommendationCounts2.write(
+                        row_count, col, row[col], cell_format04)
+                row_count += 1
+            Reader = csv.reader(
+                open(recommendationCounts2, 'r'), delimiter=',', quotechar='"')
+            row_count = 0
+            absRowCount = sum(1 for row in Reader)
+            absColCount = len(next(csv.reader(
+                open(recommendationCounts2, 'r'), delimiter=',', quotechar='"')))
+            recommendationCounts2.autofilter(0, 0, absRowCount - 1, absColCount - 1)
+
+        
+        for row in range(1, 4):
+            absColCount = len(next(csv.reader(
+                open(recommendationOccurrence, 'r'), delimiter=',', quotechar='"'
+            )))
+            colRange4 = xlsxwriter.utility.xl_range(row, 5, row, 3 + absColCount)
+            miniFormula = '=MIN(' + colRange4 + ')'
+            RecommendationAnalysis2WS.write(row, 2, miniFormula, cell_format04)
+            maxiFormula = '=MAX(' + colRange4 + ')'
+            RecommendationAnalysis2WS.write(row, 3, maxiFormula, cell_format04)
+            avgFormula = '=AVERAGE(' + colRange4 + ')'
+            RecommendationAnalysis2WS.write(row, 4, avgFormula, cell_format04)
+
+        for row in range(4, 8):
+            absColCount = len(next(csv.reader(
+                open(recommendationOccurrence, 'r'), delimiter=',', quotechar='"'
+            )))
+            colRange4 = xlsxwriter.utility.xl_range(row, 5, row, 3 + absColCount)
+            miniFormula = '=MIN(' + colRange4 + ')'
+            RecommendationAnalysis2WS.write(row, 2, miniFormula, cell_format11)
+            maxiFormula = '=MAX(' + colRange4 + ')'
+            RecommendationAnalysis2WS.write(row, 3, maxiFormula, cell_format11)
+            avgFormula = '=AVERAGE(' + colRange4 + ')'
+            RecommendationAnalysis2WS.write(row, 4, avgFormula, cell_format11)
+
+        Reader = csv.reader(
+            open(recommendationOccurrence2, 'r'), delimiter=',', quotechar='"'
+        )
+        absRowCount = sum(1 for row in Reader)
+        absColCount = len(next(csv.reader(
+            open(recommendationOccurrence2, 'r'), delimiter=',', quotechar='"'
+        )))
+
+        RecommendationAnalysis2WS.autofilter(9, 0, absRowCount + 7, absColCount + 3)
+        recommendationoccurrence2WS.autofilter(
+            0, 0, absRowCount - 2, absColCount - 1)
+        avgRecommendationOccur2WS.autofilter(0, 0, absRowCount - 2, absColCount - 1)
+
+        RecommendationAnalysis2WS.conditional_format(
+            10, 5, absRowCount + 8, absColCount +
+            3,
+            {'type': 'cell', 'criteria': '>=', 'value': 1, 'format': formatGreen}
+        )
+        RecommendationAnalysis2WS.conditional_format(
+            10, 5, absRowCount + 8, absColCount + 3,
+            {'type': 'cell', 'criteria': '=', 'value': 0, 'format': formatYellow}
+        )
+        RecommendationAnalysis2WS.conditional_format(
+            10, 5, absRowCount + 8, absColCount + 3,
+            {'type': 'cell', 'criteria': '=', 'value': -1, 'format': formatRed}
+        )
+        recommendationoccurrence2WS.conditional_format(
+            2, 1, absRowCount - 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '>=', 'value': 1, 'format': formatGreen}
+        )
+        recommendationoccurrence2WS.conditional_format(
+            2, 1, absRowCount - 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '=', 'value': 0, 'format': formatYellow}
+        )
+        recommendationoccurrence2WS.conditional_format(
+            2, 1, absRowCount - 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '=', 'value': -1, 'format': formatRed}
+        )
+        avgRecommendationOccur2WS.conditional_format(
+            2, 1, absRowCount - 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '>=', 'value': 1, 'format': formatGreen})
+        avgRecommendationOccur2WS.conditional_format(
+            2, 1, absRowCount - 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '=', 'value': 0, 'format': formatYellow})
+        avgRecommendationOccur2WS.conditional_format(
+            2, 1, absRowCount - 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '=', 'value': -1, 'format': formatRed})
+
+        RecommendationConcept2WS.conditional_format(
+            3, 3, 28, absColCount + 1,
+            {'type': 'cell', 'criteria': '>=', 'value': 1, 'format': formatGreen}
+        )
+        RecommendationConcept2WS.conditional_format(
+            3, 3, 28, absColCount + 1,
+            {'type': 'cell', 'criteria': '=', 'value': 0, 'format': formatYellow}
+        )
+        RecommendationConcept2WS.conditional_format(
+            3, 3, 28, absColCount + 1,
+            {'type': 'cell', 'criteria': '=', 'value': -1, 'format': formatRed}
+        )
+        RecommendationConcept2WS.conditional_format(
+            1, 3, 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '>=', 'value': 1, 'format': formatGreen}
+        )
+        RecommendationConcept2WS.conditional_format(
+            1, 3, 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '=', 'value': 0, 'format': formatYellow}
+        )
+        RecommendationConcept2WS.conditional_format(
+            1, 3, 1, absColCount - 1,
+            {'type': 'cell', 'criteria': '=', 'value': -1, 'format': formatRed}
+        )
+        for row in range(10, absRowCount + 8):
+            colRange5 = xlsxwriter.utility.xl_range(row, 5, row, absColCount + 3)
+            numbCollectFormula = '=COUNTIF(' + colRange5 + ',">"&0)'
+            CompleteCollectFormula = '=COUNTIF(' + colRange5 + ',"="&1)'
+            GreatCollectFormula = '=COUNTIF(' + colRange5 + ',"<"&1)-COUNTIF('+ colRange5 + ',"=0")'
+            RecommendationAnalysis2WS.write(row, 2, numbCollectFormula)
+            RecommendationAnalysis2WS.write(row, 3, CompleteCollectFormula)
+            RecommendationAnalysis2WS.write(row, 4, GreatCollectFormula)
 
 ###################################################################
     XpathAnalysisWS = workbook.add_worksheet('AllXpaths')
@@ -735,7 +1037,7 @@ def CombinationSpreadsheet(recommendationName, xpathOccurrence, recommendationOc
             formula2 = '=COUNTIF(XpathOccurrence!' + colRange + ',">"&0)'
             RecommendationAnalysisWS.write(2, col + 5, formula2)
 
-            formula3 = '=COUNTIF('+ recommendationName + '_Occurrence!' + colRange + ',">"&0)'
+            formula3 = '=COUNTIF(BestPractices2004_Occurrence!' + colRange + ',">"&0)'
             RecommendationAnalysisWS.write(3, col + 5, formula3)
 
             formula4 = '='+cell4+'/'+cell3
@@ -744,31 +1046,31 @@ def CombinationSpreadsheet(recommendationName, xpathOccurrence, recommendationOc
             formula5 = '=COUNTIF(XpathOccurrence!' + colRange + ',"=1")/'+cell3 
             RecommendationAnalysisWS.write(5, col + 5, formula5, cell_format11)
 
-            formula6 = '=COUNTIF('+ recommendationName + '_Occurrence!' + colRange + ',"=1")/'+cell3
+            formula6 = '=COUNTIF(BestPractices2004_Occurrence!' + colRange + ',"=1")/'+cell3
             RecommendationAnalysisWS.write(6, col + 5, formula6, cell_format11)
 
             formula7 = '='+RecommendationElementTotal+'/'+ElementTotal
             RecommendationAnalysisWS.write(7, col + 5, formula7, cell_format11)
 
             formula1 = (
-                '=VLOOKUP("Number of Records",'+ recommendationName + '_Occurrence!1:1048576,' +
+                '=VLOOKUP("Number of Records",BestPractices2004_Occurrence!1:1048576,' +
                 str(col + 2) + ', False)'
             )
             RecommendationAnalysisWS.write(1, col + 5, formula1, cell_format04)
 
-            formula = '='+ recommendationName + '_Occurrence!' + '%s' % cell2
+            formula = '=BestPractices2004_Occurrence!' + '%s' % cell2
             RecommendationAnalysisWS.write(0, col + 5, formula)
             dateFormula = (
-                '=LEFT(RIGHT('+ recommendationName + '_Occurrence!' + '%s' % cell2 +
-                ',LEN('+ recommendationName + 'Occurrence!' + '%s' % cell2 +
-                ')-FIND("_", '+ recommendationName + '_Occurrence!' +
-                '%s' % cell2 + ')-1),FIND("_",'+ recommendationName + '_Occurrence!' +
+                '=LEFT(RIGHT(BestPractices2004_Occurrence!' + '%s' % cell2 +
+                ',LEN(BestPractices2004_Occurrence!' + '%s' % cell2 +
+                ')-FIND("_", BestPractices2004_Occurrence!' +
+                '%s' % cell2 + ')-1),FIND("_",BestPractices2004_Occurrence!' +
                 '%s' % cell2 + ')+1)'
             )
             RecommendationAnalysisWS.write(8, col + 5, dateFormula)
             collectFormula = (
-                '=LEFT('+ recommendationName + '_Occurrence!' + '%s' % cell2 +
-                ',FIND("_",'+ recommendationName + '_Occurrence!' + '%s' % cell2 + ')-1)'
+                '=LEFT(BestPractices2004_Occurrence!' + '%s' % cell2 +
+                ',FIND("_",BestPractices2004_Occurrence!' + '%s' % cell2 + ')-1)'
             )
 
             RecommendationAnalysisWS.write(9, col + 5, collectFormula)
@@ -977,12 +1279,444 @@ def crop(image_path, coords, saved_location):
     cropped_image.save(saved_location)
 
 
+def Site_ttConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, ConceptOrder, ElementOrder, YearsInvestigated):
+    recMD = ['RecConcept',
+             'RecLevel',
+             'RecElement']
+     # use a sites recommendation elements occurrence table, and add some columns for metadata about the recommendation
+    recOccurDF = pd.read_csv(os.path.join("..","data", recommendationName, Site+"_" + recommendationName + "Occurrence.csv"))
+    recOccurDF.insert(0, "RecElement", 0, allow_duplicates=False)
+    recOccurDF.insert(0, "RecLevel", 0, allow_duplicates=False)    
+    recOccurDF.insert(0, "RecConcept", 0, allow_duplicates=False)
+    ''' 
+    use the RecDict to look at the XPath column and for each key that matches part of any cell,
+    write the value into the same row in the recOccurDF
+    '''
+    recOccurDF['RecElement'] = recOccurDF['XPath'].apply(lambda x: [value for key, value in RecDict.items() if key in x][0] )
+    # create a list to order the columns with
+    columnOrder = list(recOccurDF)
+    # don't need xpaths any more
+    columnOrder.remove('XPath')
+
+    ''' 
+    create a pivot table that leverages the dataframe recOccurDF's column for recommendation elements 
+    and assigns the highest percentage any of the xpaths of the child elements to that row for a particular year
+    '''
+    radarElements = pd.pivot_table(recOccurDF, index='RecElement', columns=None, aggfunc='max').reindex(ElementOrder).reset_index()
+    radarElements = radarElements[columnOrder]
+   
+    # fill in the metadata about concepts and recommendation levels
+    radarElements['RecConcept'] = pd.Series(ConceptOrder)
+    radarElements['RecLevel'] = pd.Series(LevelOrder)
+    radarElements = radarElements.fillna(value=0.0)
+    lineConcepts = radarElements
+     # remove the site name from the column
+    radarElements = radarElements.rename(columns={col: col.split('__')[-1] for col in radarElements.columns})
+    # create recommendation concept csv
+    #lineConcepts = lineConcepts.drop(['RecElement','RecLevel'], axis=1)
+    lineConcepts.loc[-1] = lineConcepts.iloc[1:,:].mean(axis=0, numeric_only=True)
+    lineConcepts.index = lineConcepts.index + 1  # shifting index
+    lineConcepts.fillna('Average Completeness', inplace=True)
+    lineConcepts = lineConcepts.sort_index()
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, Site+'_' + recommendationName + 'Complete.csv'), index=False)
+    
+    # remove the site name from the column
+    lineConcepts = lineConcepts.rename(columns={col: col.split('__')[-1] for col in lineConcepts.columns})
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, Site+'_' + recommendationName + 'Completeness.csv'), index=False)
+
+    # create new version of concept occurrence table
+    radarList = list(radarElements)
+    difference = list(set(YearsInvestigated) - set(radarList[3:]))
+    for year in difference:
+        radarElements.insert(0, year, 0, allow_duplicates=False) 
+    RecOccurDFcols = recMD + YearsInvestigated
+    radarElements = radarElements[RecOccurDFcols]
+    '''
+    Take the occurrence of the conceptual elements from each site's pivot table and plot each years output
+    on a radar chart of 0 to 1 with each RecElement as an axis and the occurrence of records the percentage of color along that axis.
+    '''
+    # create a structure to add data to.
+    data = []
+    fig = tools.make_subplots(rows=14, cols=1, print_grid=False)
+    count = 0
+    # add the data from each year to a subplot.
+    for year in YearsInvestigated: #collectionsToProcess
+        count = count + 1
+        data.append(go.Scatterpolar(
+            name = year, 
+            mode = 'lines', 
+            r = radarElements[year].tolist()[1:],
+            theta = radarElements['RecElement'].tolist()[1:],
+            line = dict(width = 50), #, shape = 'spline', smoothing = 1.3),
+            #opacity = .75,
+            fill = 'toself',
+            #fillcolor = '',
+            connectgaps = False,
+            subplot = 'polar'+year
+        ))
+
+        
+    fig.add_traces(data)
+    
+    layout = {
+    'polar2005': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2006': dict(
+
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2007': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2008': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2009': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2010': dict(
+
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2011': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2012': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2013': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2014': dict(
+
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2015': dict(
+
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2016': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2017': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2018': dict(
+
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'showlegend': False,
+    "height": 1200, "width": 16800, "autosize": False, "title": Site + recommendationName + 'Completeness 2005-2018'    
+}
+    
+# create a description of the placement of each subplot    
+    layout2 = {
+    'polar2005': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [.96, 1]
+      ),        
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2006': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.89, 1]
+      ),
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2007': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.818, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2008': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.746, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2009': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.675, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2010': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.603, 1]
+      ),
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2011': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.531, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2012': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.460, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2013': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.388, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2014': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.317, 1]
+      ),
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2015': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.245, 1]
+      ),
+      
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2016': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.174, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2017': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.103, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'polar2018': dict(
+      domain = dict(
+        x = [0, 1],
+        y = [0.029, 1]
+      ),
+      radialaxis = dict(
+        angle = 0
+      ),
+      angularaxis = dict(
+        direction = "clockwise",
+        period = 6
+      )
+    ),
+    'showlegend': False,
+    "height": 32700, "width": 1200, "autosize": False    
+}
+    fig2 = {'data':data,'layout':layout2}
+
+    
+    pio.write_image(fig2, os.path.join('..','data', recommendationName, Site + recommendationName + '_bigPict_.png'))
+
+    fig = {'data':data,'layout':layout}
+    
+    pio.write_image(fig, os.path.join('..','data', recommendationName, Site + '_' + recommendationName + '_.png'))
+
+    crop(os.path.join('..','data', recommendationName, Site+ recommendationName + '_bigPict_.png'), (0, 0, 1200, 16600), os.path.join('..','data', recommendationName, Site+ recommendationName + '_bigPicture_.png'))
+    os.remove(os.path.join('..','data', recommendationName, Site+ recommendationName + '_bigPict_.png'))
+
+
 def CombineAppliedRecommendation(Site, recElements, recommendationName, RecommendationOccurrenceToCombine, RecommendationcountsToCombine=None):
     # places for all the combined data
 
-    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "Report" + '_' + recommendationName + 'Occurrence.csv')
-    RecommendationConcept = os.path.join('..','data', recommendationName, "Report" + '_' + recommendationName + 'completeness.csv')
-    #RecommendationGraph = os.path.join('..','data', recommendationName, "Report" + '_' + recommendationName + '_.png')
+    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "combinedCollections" + '_' + recommendationName + 'Occurrence.csv')
+    RecommendationConcept = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + 'Completeness.csv')
+    #RecommendationGraph = os.path.join('..','data', recommendationName, "combinedCollections" + '_' + recommendationName + '_.png')
 
     if RecommendationcountsToCombine is not None:
         RecommendationCounts = os.path.join("..", "data", recommendationName, Site + '_' + recommendationName + 'Counts.csv')
@@ -1035,7 +1769,7 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
              'RecLevel',
              'RecElement']
      # use a sites recommendation elements occurrence table, and add some columns for metadata about the recommendation
-    recOccurDF = pd.read_csv(os.path.join("..","data", recommendationName, "Report"+"_" + recommendationName + "Occurrence.csv"))
+    recOccurDF = pd.read_csv(os.path.join("..","data", recommendationName, "combinedCollections"+"_" + recommendationName + "Occurrence.csv"))
     recOccurDF.insert(0, "RecElement", 0, allow_duplicates=False)
     recOccurDF.insert(0, "RecLevel", 0, allow_duplicates=False)    
     recOccurDF.insert(0, "RecConcept", '', allow_duplicates=False)
@@ -1069,11 +1803,11 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
     lineConcepts.index = lineConcepts.index + 1  # shifting index
     lineConcepts.fillna('Average Completeness', inplace=True)
     lineConcepts = lineConcepts.sort_index()
-    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "Report"+'_' + recommendationName + 'complete.csv'), index=False)
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "CombinedCollections"+'_' + recommendationName + 'Complete.csv'), index=False)
     
     # remove the site name from the column
-    #lineConcepts = lineConcepts.rename(columns={col: col.split('__')[-1] for col in lineConcepts.columns})
-    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "Report"+'_' + recommendationName + 'completeness.csv'), index=False)
+    lineConcepts = lineConcepts.rename(columns={col: col.split('__')[-1] for col in lineConcepts.columns})
+    lineConcepts.to_csv(os.path.join('..','data', recommendationName, "CombinedCollections"+'_' + recommendationName + 'Completeness.csv'), index=False)
 
     # create new version of concept occurrence table
     radarList = list(radarElements)
@@ -1145,7 +1879,7 @@ def Collection_ConceptAnalysis(Site, recommendationName, RecDict, LevelOrder, Co
       new_im.paste(im, (x_offset,0))
       x_offset += im.size[0]
 
-    new_im.save(os.path.join('..','data', recommendationName, 'Report_' + recommendationName + '_.png'))
+    new_im.save(os.path.join('..','data', recommendationName, 'combinedCollections_' + recommendationName + '_.png'))
     
         #im = Image.open(os.path.join('..','data', recommendationName, Site.upper() + '_' + year + '_' + recommendationName + '_.png'))
         #helvetica = ImageFont.truetype("/Library/Fonts/Arial.ttf", 12)
