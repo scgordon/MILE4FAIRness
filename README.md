@@ -19,7 +19,7 @@ Since there are many ideas of what it means to be FAIR, this workshop will allow
 
 The recommendation will then be applied to the collections that participants have chosen to analyze. The workshop framework is highly portable and reusable, even including the generation of the raw data needed to evaluate the content of the metadata, though only the structure of documents will be utilized in this workshop. A report on the outcomes of the analysis will be created as a sharable Google Sheet. The report generated allows for comparison of collections, so that improvement can be measured, documented and visualized. 
 
-* [Slides](https://schd.ws/hosted_files/2018esipsummermeeting/ab/MILESsessionOverview.pptx)
+* [Slides](https://static.sched.com/hosted_files/2019esipsummermeeting/ed/scgordonMetadataFitness.pptx)
 
 Your Python environment requires the following:
 
