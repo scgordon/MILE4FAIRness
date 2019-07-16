@@ -980,7 +980,7 @@ def crop(image_path, coords, saved_location):
 def CombineAppliedRecommendation(Site, recElements, recommendationName, RecommendationOccurrenceToCombine, RecommendationcountsToCombine=None):
     # places for all the combined data
 
-    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "Report" + '_' + recommendationName + 'Occurrence.csv')
+    RecommendationOccurrence = os.path.join("..", "data", recommendationName, "Report" + '_' + recommendationName + 'occurrence.csv')
     RecommendationConcept = os.path.join('..','data', recommendationName, "Report" + '_' + recommendationName + 'completeness.csv')
     #RecommendationGraph = os.path.join('..','data', recommendationName, "Report" + '_' + recommendationName + '_.png')
 
